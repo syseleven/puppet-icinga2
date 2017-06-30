@@ -1,9 +1,17 @@
 fixtures:
-  forge_modules:
-    stdlib: "puppetlabs/stdlib"
-    concat: "puppetlabs/concat"
-    apt: "puppetlabs/apt"
-    chocolatey: "puppetlabs/chocolatey"
-    zypprepo: "puppet/zypprepo"
+  #forge_modules:
+  #  stdlib: "puppetlabs/stdlib"
+  #  concat: "puppetlabs/concat"
+  #  apt: "puppetlabs/apt"
+  #  chocolatey: "puppetlabs/chocolatey"
+  #  zypprepo: "puppet/zypprepo"
+
+  repositories:
+    apt:        'https://github.com/puppetlabs/puppetlabs-apt'
+    chocolatey: 'https://github.com/puppetlabs/puppetlabs-chocolatey'
+    concat:     'https://github.com/puppetlabs/puppetlabs-concat'
+    stdlib:     'https://github.com/puppetlabs/puppetlabs-stdlib'
+    zypprepo:   'https://github.com/voxpupuli/puppet-zypprepo'
+
   symlinks:
     icinga2: "#{source_dir}"
