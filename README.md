@@ -55,7 +55,7 @@ available in Icinga 2 can be enabled and configured with this module.
 
 This module depends on:
 
-* [puppetlabs/stdlib] >= 4.10.0
+* [puppetlabs/stdlib] >= 4.16.0
 * [puppetlabs/concat] >= 2.0.1
 
 Depending on your setup following modules may also be required:
