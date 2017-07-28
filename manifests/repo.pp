@@ -78,7 +78,7 @@ class icinga2::repo {
       'suse': {
 
         file { '/etc/pki/GPG-KEY-icinga':
-          ensure => present,
+          ensure => file,
           source => 'http://packages.icinga.com/icinga.key',
         }
 
@@ -96,7 +96,7 @@ class icinga2::repo {
               baseurl  => "http://packages.icinga.com/SUSE/${::operatingsystemmajrelease}/release/",
               enabled  => 1,
               gpgcheck => 1,
-              require  => Exec['import icinga gpg key']
+              require  => Exec['import icinga gpg key'],
             }
           }
           default: {

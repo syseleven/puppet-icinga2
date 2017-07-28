@@ -4,8 +4,8 @@
 #
 #
 define icinga2::feature(
-  $ensure  = present,
-  $feature = $title,
+  Enum['present', 'absent'] $ensure  = present,
+  String                    $feature = $title,
 ) {
 
   if defined($caller_module_name) and $module_name != $caller_module_name and $caller_module_name != '' {
@@ -15,9 +15,6 @@ define icinga2::feature(
   if ! defined(Class['::icinga2']) {
     fail('You must include the icinga2 base class before using any icinga2 feature class!')
   }
-
-  validate_re($ensure, [ '^present$', '^absent$' ],
-    "${ensure} isn't supported. Valid values are 'present' and 'absent'.")
 
   $user     = $::icinga2::params::user
   $group    = $::icinga2::params::group

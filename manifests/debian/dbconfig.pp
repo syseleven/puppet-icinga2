@@ -1,25 +1,16 @@
 class icinga2::debian::dbconfig(
-  $dbtype,
-  $dbserver,
-  $dbport,
-  $dbname,
-  $dbuser,
-  $dbpass,
-  $ssl = false,
+  Enum['mysql', 'psql'] $dbtype,
+  String                $dbserver,
+  Integer[1,65535]      $dbport,
+  String                $dbname,
+  String                $dbuser,
+  String                $dbpass,
+  Boolean               $ssl = false,
 ) {
 
   if defined($caller_module_name) and $module_name != $caller_module_name and $caller_module_name != '' {
     fail("icinga2::debian::dbconfig is a private define resource of the module icinga2, you're not permitted to use it.")
   }
-
-  validate_re($dbtype, [ '^mysql$', '^pgsql$' ],
-    "${dbtype} isn't supported. Valid values are 'mysql' and 'pgsql'.")
-  validate_string($dbserver)
-  validate_integer($dbport)
-  validate_string($dbname)
-  validate_string($dbuser)
-  validate_string($dbpass)
-  validate_bool($ssl)
 
   # dbconfig config for Debian or Ubuntu
   if $::osfamily == 'debian' {
