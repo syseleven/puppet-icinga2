@@ -27,7 +27,7 @@
 #
 #
 class icinga2::feature::graphite(
-  Enum['present', 'absent'] $ensure                 = present,
+  Enum['absent', 'present'] $ensure                 = present,
   String                    $host                   = '127.0.0.1',
   Integer[1,65535]          $port                   = 2003,
   String                    $host_name_template     = 'icinga2.$host.name$.host.$host.check_command$',

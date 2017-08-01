@@ -14,7 +14,7 @@
 #
 #
 class icinga2::feature::debuglog(
-  Enum['present', 'absent'] $ensure   = present,
+  Enum['absent', 'present'] $ensure   = present,
   Stdlib::Absolutepath      $path     = "${::icinga2::params::log_dir}/debug.log",
 ) {
 

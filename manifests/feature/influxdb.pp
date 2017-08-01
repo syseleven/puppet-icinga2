@@ -97,14 +97,14 @@
 #
 #
 class icinga2::feature::influxdb(
-  Enum['present', 'absent']      $ensure                 = present,
+  Enum['absent', 'present']      $ensure                 = present,
   String                         $host                   = '127.0.0.1',
   Integer[1,65535]               $port                   = 8086,
   String                         $database               = 'icinga2',
   Optional[String]               $username               = undef,
   Optional[String]               $password               = undef,
   Boolean                        $enable_ssl             = false,
-  Enum['puppet', 'none']         $pki                    = 'puppet',
+  Enum['none', 'puppet']         $pki                    = 'puppet',
   Optional[Stdlib::Absolutepath] $ssl_key_path           = undef,
   Optional[Stdlib::Absolutepath] $ssl_cert_path          = undef,
   Optional[Stdlib::Absolutepath] $ssl_cacert_path        = undef,

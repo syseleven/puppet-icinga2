@@ -29,7 +29,7 @@
 #
 #
 define icinga2::object::zone(
-  Enum['present', 'absent']      $ensure    = present,
+  Enum['absent', 'present']      $ensure    = present,
   String                         $zone_name = $title,
   Optional[Array]                $endpoints = [],
   Optional[String]               $parent    = undef,
@@ -42,7 +42,7 @@ define icinga2::object::zone(
 
   $conf_dir = $::icinga2::params::conf_dir
 
-  # set defaults and validate
+  # set defaults
   if $target {
     $_target = $target
   } else {

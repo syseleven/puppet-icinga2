@@ -12,7 +12,7 @@
 #
 #
 class icinga2::feature::checker(
-  Enum['present', 'absent'] $ensure            = present,
+  Enum['absent', 'present'] $ensure            = present,
   Optional[Integer[1]]      $concurrent_checks = undef,
 ) {
 

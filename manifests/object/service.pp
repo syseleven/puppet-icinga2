@@ -159,7 +159,7 @@
 
 define icinga2::object::service (
   Stdlib::Absolutepath                       $target,
-  Enum['present', 'absent']                  $ensure                 = present,
+  Enum['absent', 'present']                  $ensure                 = present,
   String                                     $service_name           = $title,
   Optional[String]                           $display_name           = undef,
   Optional[String]                           $host_name              = undef,

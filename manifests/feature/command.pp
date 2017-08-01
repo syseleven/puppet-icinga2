@@ -13,7 +13,7 @@
 #
 #
 class icinga2::feature::command(
-  Enum['present', 'absent'] $ensure       = present,
+  Enum['absent', 'present'] $ensure       = present,
   Stdlib::Absolutepath      $command_path = "${::icinga2::params::run_dir}/cmd/icinga2.cmd",
 ) {
 

@@ -38,7 +38,7 @@
 #
 define icinga2::object::usergroup (
   Stdlib::Absolutepath      $target,
-  Enum['present', 'absent'] $ensure         = present,
+  Enum['absent', 'present'] $ensure         = present,
   String                    $usergroup_name = $title,
   Optional[String]          $display_name   = undef,
   Optional[Array]           $groups         = [],

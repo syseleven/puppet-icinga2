@@ -1,16 +1,14 @@
 class icinga2::debian::dbconfig(
-  Enum['mysql', 'psql'] $dbtype,
-  String                $dbserver,
-  Integer[1,65535]      $dbport,
-  String                $dbname,
-  String                $dbuser,
-  String                $dbpass,
-  Boolean               $ssl = false,
+  Enum['mysql', 'pgsql'] $dbtype,
+  String                 $dbserver,
+  Integer[1,65535]       $dbport,
+  String                 $dbname,
+  String                 $dbuser,
+  String                 $dbpass,
+  Boolean                $ssl = false,
 ) {
 
-  if defined($caller_module_name) and $module_name != $caller_module_name and $caller_module_name != '' {
-    fail("icinga2::debian::dbconfig is a private define resource of the module icinga2, you're not permitted to use it.")
-  }
+  assert_private()
 
   # dbconfig config for Debian or Ubuntu
   if $::osfamily == 'debian' {

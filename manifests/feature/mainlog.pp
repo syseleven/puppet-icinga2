@@ -16,8 +16,8 @@
 #
 #
 class icinga2::feature::mainlog(
-  Enum['present', 'absent']                         $ensure   = present,
-  Enum['information', 'notice', 'warning', 'debug'] $severity = 'information',
+  Enum['absent', 'present']                         $ensure   = present,
+  Enum['debug', 'information', 'notice', 'warning'] $severity = 'information',
   Stdlib::Absolutepath                              $path     = "${::icinga2::params::log_dir}/icinga2.log",
 ) {
 

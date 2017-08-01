@@ -45,7 +45,7 @@
 #
 define icinga2::object::eventcommand (
   Stdlib::Absolutepath            $target,
-  Enum['present', 'absent']       $ensure            = present,
+  Enum['absent', 'present']       $ensure            = present,
   String                          $eventcommand_name = $title,
   Optional[Variant[Array,String]] $command           = undef,
   Optional[Hash]                  $env               = undef,

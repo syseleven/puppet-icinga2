@@ -17,9 +17,9 @@
 #
 #
 class icinga2::feature::compatlog(
-  Enum['present', 'absent']                    $ensure          = present,
+  Enum['absent', 'present']                    $ensure          = present,
   Stdlib::Absolutepath                         $log_dir         = "${::icinga2::params::log_dir}/compat",
-  Enum['HOURLY', 'DAILY', 'WEEKLY', 'MONTHLY'] $rotation_method = 'DAILY',
+  Enum['DAILY', 'HOURLY', 'MONTHLY', 'WEEKLY'] $rotation_method = 'DAILY',
 ) {
 
   if ! defined(Class['::icinga2']) {

@@ -15,7 +15,7 @@
 #
 #
 class icinga2::feature::notification(
-  Enum['present', 'absent'] $ensure    = present,
+  Enum['absent', 'present'] $ensure    = present,
   Optional[Boolean]         $enable_ha = undef,
 ) {
 

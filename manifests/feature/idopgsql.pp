@@ -71,8 +71,8 @@
 #
 #
 class icinga2::feature::idopgsql(
-  Enum['present', 'absent'] $ensure                 = present,
-  Host                      $host                   = '127.0.0.1',
+  Enum['absent', 'present'] $ensure                 = present,
+  String                    $host                   = '127.0.0.1',
   Integer[1,65535]          $port                   = 5432,
   String                    $user                   = 'icinga',
   String                    $password               = 'icinga',

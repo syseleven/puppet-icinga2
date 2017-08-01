@@ -13,8 +13,8 @@
 #
 #
 class icinga2::feature::syslog(
-  Enum['present', 'absent']                         $ensure   = present,
-  Enum['information', 'notice', 'warning', 'debug'] $severity = 'warning',
+  Enum['absent', 'present']                         $ensure   = present,
+  Enum['debug', 'information', 'notice', 'warning'] $severity = 'warning',
 ) {
 
   if ! defined(Class['::icinga2']) {

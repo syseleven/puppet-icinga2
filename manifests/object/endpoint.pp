@@ -31,7 +31,7 @@
 #
 #
 define icinga2::object::endpoint(
-  Enum['present', 'absent']                  $ensure        = present,
+  Enum['absent', 'present']                  $ensure        = present,
   Optional[String]                           $endpoint_name = $title,
   Optional[String]                           $host          = undef,
   Optional[Integer[1,65535]]                 $port          = undef,

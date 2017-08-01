@@ -31,8 +31,8 @@
 #
 #
 class icinga2::feature::livestatus(
-  Enum['present', 'absent'] $ensure          = present,
-  Enum['unix', 'tcp']       $socket_type     = 'unix',
+  Enum['absent', 'present'] $ensure          = present,
+  Enum['tcp', 'unix']       $socket_type     = 'unix',
   String                    $bind_host       = '127.0.0.1',
   Integer[1,65535]          $bind_port       = 6558,
   Stdlib::Absolutepath      $socket_path     = "${::icinga2::params::run_dir}/cmd/livestatus",

@@ -61,25 +61,23 @@
 #
 #
 define icinga2::object(
-  String                            $object_type,
-  Stdlib::Absolutepath              $target,
-  String                            $order,
-  Enum['present', 'absent']         $ensure       = present,
-  String                            $object_name  = $title,
-  Boolean                           $template     = false,
-  Boolean                           $apply        = false,
-  Array                             $attrs_list   = [],
-  Optional[Enum['Host', 'Service']] $apply_target = undef,
-  Boolean                           $prefix       = false,
-  Array                             $import       = [],
-  Array                             $assign       = [],
-  Array                             $ignore       = [],
-  Hash                              $attrs        = {},
+  String                                                   $object_type,
+  Stdlib::Absolutepath                                     $target,
+  String                                                   $order,
+  Enum['present', 'absent']                                $ensure       = present,
+  String                                                   $object_name  = $title,
+  Boolean                                                  $template     = false,
+  Variant[Boolean, Pattern[/^.+\s+(=>\s+.+\s+)?in\s+.+$/]] $apply        = false,
+  Array                                                    $attrs_list   = [],
+  Optional[Enum['Host', 'Service']]                        $apply_target = undef,
+  Boolean                                                  $prefix       = false,
+  Array                                                    $import       = [],
+  Array                                                    $assign       = [],
+  Array                                                    $ignore       = [],
+  Hash                                                     $attrs        = {},
 ) {
 
-  if defined($caller_module_name) and $module_name != $caller_module_name and $caller_module_name != '' {
-    fail("icinga2::object is a private define resource of the module icinga2, you're not permitted to use it.")
-  }
+  assert_private()
 
   include ::icinga2::params
 

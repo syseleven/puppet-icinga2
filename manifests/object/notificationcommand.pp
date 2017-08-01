@@ -49,17 +49,17 @@
 #
 #
 define icinga2::object::notificationcommand (
-  Stdlib::Absolutepath      $target,
-  Enum['present', 'absent'] $ensure                   = present,
-  String                    $notificationcommand_name = $title,
-  Variant[Array, String]    $command                  = undef,
-  Optional[Hash]            $env                      = undef,
-  Optional[Hash]            $vars                     = undef,
-  Optional[Integer[1]]      $timeout                  = undef,
-  Optional[Hash]            $arguments                = undef,
-  Boolean                   $template                 = false,
-  Array                     $import                   = ['plugin-notification-command'],
-  Pattern[/^\d+$/]          $order                    = '25',
+  Stdlib::Absolutepath             $target,
+  Enum['absent', 'present']        $ensure                   = present,
+  String                           $notificationcommand_name = $title,
+  Optional[Variant[Array, String]] $command                  = undef,
+  Optional[Hash]                   $env                      = undef,
+  Optional[Hash]                   $vars                     = undef,
+  Optional[Integer[1]]             $timeout                  = undef,
+  Optional[Hash]                   $arguments                = undef,
+  Boolean                          $template                 = false,
+  Array                            $import                   = ['plugin-notification-command'],
+  Pattern[/^\d+$/]                 $order                    = '25',
 ){
 
   # compose attributes

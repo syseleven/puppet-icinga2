@@ -40,7 +40,7 @@
 #
 #
 class icinga2::feature::perfdata(
-  Enum['present', 'absent'] $ensure                  = present,
+  Enum['absent', 'present'] $ensure                  = present,
   Stdlib::Absolutepath      $host_perfdata_path      = "${::icinga2::params::spool_dir}/perfdata/host-perfdata",
   Stdlib::Absolutepath      $service_perfdata_path   = "${::icinga2::params::spool_dir}/perfdata/service-perfdata",
   Stdlib::Absolutepath      $host_temp_path          = "${::icinga2::params::spool_dir}/tmp/host-perfdata",

@@ -48,7 +48,7 @@
 define icinga2::object::apiuser(
   Stdlib::Absolutepath      $target,
   Array                     $permissions,
-  Enum['present', 'absent'] $ensure       = present,
+  Enum['absent', 'present'] $ensure       = present,
   String                    $apiuser_name = $title,
   Optional[String]          $password     = undef,
   Optional[String]          $client_cn    = undef,

@@ -140,8 +140,8 @@
 #
 #
 class icinga2::feature::api(
-  Enum['present', 'absent']               $ensure          = present,
-  Enum['puppet', 'none', 'icinga2', 'ca'] $pki             = 'puppet',
+  Enum['absent', 'present']               $ensure          = present,
+  Enum['ca', 'icinga2', 'none', 'puppet'] $pki             = 'puppet',
   Optional[Stdlib::Absolutepath]          $ssl_key_path    = undef,
   Optional[Stdlib::Absolutepath]          $ssl_cert_path   = undef,
   Optional[Stdlib::Absolutepath]          $ssl_csr_path    = undef,
@@ -194,7 +194,7 @@ class icinga2::feature::api(
     path => $::path,
   }
 
-  # Set defaults for certificate stuff and/or do validation
+  # Set defaults for certificate stuff
   if $ssl_key_path {
     $_ssl_key_path = $ssl_key_path
   } else {

@@ -57,7 +57,7 @@
 #
 define icinga2::object::scheduleddowntime (
   Stdlib::Absolutepath                      $target,
-  Enum['present', 'absent']                 $ensure                 = present,
+  Enum['absent', 'present']                 $ensure                 = present,
   String                                    $scheduleddowntime_name = $title,
   Optional[String]                          $host_name              = undef,
   Optional[String]                          $service_name           = undef,

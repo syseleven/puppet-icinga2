@@ -23,7 +23,7 @@
 #
 define icinga2::object::checkresultreader (
   Stdlib::Absolutepath           $target,
-  Enum['present', 'absent']      $ensure                 = present,
+  Enum['absent', 'present']      $ensure                 = present,
   String                         $checkresultreader_name = $title,
   Optional[Stdlib::Absolutepath] $spool_dir              = undef,
   Pattern[/^\d+$/]               $order                  = '10',

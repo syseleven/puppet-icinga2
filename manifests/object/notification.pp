@@ -80,9 +80,9 @@
 #
 define icinga2::object::notification (
   Stdlib::Absolutepath                       $target,
-  Enum['present', 'absent']                  $ensure            = present,
+  Enum['absent', 'present']                  $ensure            = present,
   String                                     $notification_name = $title,
-  String                                     $host_name         = undef,
+  Optional[String]                           $host_name         = undef,
   Optional[String]                           $service_name      = undef,
   Optional[Hash]                             $vars              = undef,
   Optional[Variant[Array, String]]           $users             = undef,

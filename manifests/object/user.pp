@@ -57,7 +57,7 @@
 #
 define icinga2::object::user (
   Stdlib::Absolutepath      $target,
-  Enum['present', 'absent'] $ensure               = present,
+  Enum['absent', 'present'] $ensure               = present,
   String                    $user_name            = $title,
   Optional[String]          $display_name         = undef,
   Optional[String]          $email                = undef,

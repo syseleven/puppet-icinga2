@@ -96,7 +96,7 @@ describe('icinga2::feature::api', :type => :class) do
     context "#{os} with pki => foo (not a valid value)" do
       let(:params) { {:pki => 'foo'} }
 
-      it { is_expected.to raise_error(Puppet::Error, /foo isn't supported/) }
+      it { is_expected.to raise_error(Puppet::Error, /expects a match for Enum\['ca', 'icinga2', 'none', 'puppet'\]/) }
     end
 
 
@@ -127,7 +127,8 @@ describe('icinga2::feature::api', :type => :class) do
     context "#{os} with ssl_key_path = foo/bar (not a valid absolute path)" do
       let(:params) { {:ssl_key_path => 'foo/bar'} }
 
-      it { is_expected.to raise_error(Puppet::Error, /"foo\/bar" is not an absolute path/) }
+      it { is_expected.to raise_error(Puppet::Error, /expects a match for Variant\[Stdlib::Windowspath = Pattern\[\/.*\/\], Stdlib::Unixpath = Pattern\[\/.*\/\]\]/) }
+      it { is_expected.to raise_error(Puppet::Error, /expects a match for Variant\[Stdlib::Windowspath = Pattern\[\/.*\/\], Stdlib::Unixpath = Pattern\[\/.*\/\]\]/) }
     end
 
 
@@ -143,7 +144,7 @@ describe('icinga2::feature::api', :type => :class) do
     context "#{os} with ssl_cert_path = foo/bar (not a valid absolute path)" do
       let(:params) { {:ssl_cert_path => 'foo/bar'} }
 
-      it { is_expected.to raise_error(Puppet::Error, /"foo\/bar" is not an absolute path/) }
+      it { is_expected.to raise_error(Puppet::Error, /expects a match for Variant\[Stdlib::Windowspath = Pattern\[\/.*\/\], Stdlib::Unixpath = Pattern\[\/.*\/\]\]/) }
     end
 
 
@@ -159,7 +160,7 @@ describe('icinga2::feature::api', :type => :class) do
     context "#{os} with ssl_cacert_path = foo/bar (not a valid absolute path)" do
       let(:params) { {:ssl_cacert_path => 'foo/bar'} }
 
-      it { is_expected.to raise_error(Puppet::Error, /"foo\/bar" is not an absolute path/) }
+      it { is_expected.to raise_error(Puppet::Error, /expects a match for Variant\[Stdlib::Windowspath = Pattern\[\/.*\/\], Stdlib::Unixpath = Pattern\[\/.*\/\]\]/) }
     end
 
 
@@ -184,7 +185,7 @@ describe('icinga2::feature::api', :type => :class) do
     context "#{os} with accept_config => foo (not a valid boolean)" do
       let(:params) { {:accept_config => 'foo'} }
 
-      it { is_expected.to raise_error(Puppet::Error, /"foo" is not a boolean/) }
+      it { is_expected.to raise_error(Puppet::Error, /expects a Boolean value/) }
     end
 
 
@@ -209,7 +210,7 @@ describe('icinga2::feature::api', :type => :class) do
     context "#{os} with accept_commands => foo (not a valid boolean)" do
       let(:params) { {:accept_commands => 'foo'} }
 
-      it { is_expected.to raise_error(Puppet::Error, /"foo" is not a boolean/) }
+      it { is_expected.to raise_error(Puppet::Error, /expects a Boolean value/) }
     end
 
 
@@ -222,7 +223,7 @@ describe('icinga2::feature::api', :type => :class) do
 
 
     context "#{os} with pki => 'icinga2', ca_port => 1234" do
-      let(:params) { {:pki => 'icinga2',:ca_port => '1234'} }
+      let(:params) { {:pki => 'icinga2',:ca_port => 1234} }
 
       it { is_expected.to contain_concat__fragment('icinga2::object::ApiListener::api')
                               .with({ 'target' => '/etc/icinga2/features-available/api.conf' }) }
@@ -232,7 +233,7 @@ describe('icinga2::feature::api', :type => :class) do
     context "#{os} with pki => 'icinga2', ca_port => foo (not a valid integer)" do
       let(:params) { {:pki => 'icinga2',:ca_port => 'foo'} }
 
-      it { is_expected.to raise_error(Puppet::Error, /first argument to be an Integer/) }
+      it { is_expected.to raise_error(Puppet::Error, /expects an Integer value/) }
     end
 
 
@@ -255,7 +256,7 @@ describe('icinga2::feature::api', :type => :class) do
     context "#{os} with endpoints => foo (not a valid hash)" do
       let(:params) { {:endpoints => 'foo'} }
 
-      it { is_expected.to raise_error(Puppet::Error, /"foo" is not a Hash/) }
+      it { is_expected.to raise_error(Puppet::Error, /expects a Hash value/) }
     end
 
 
@@ -270,7 +271,7 @@ describe('icinga2::feature::api', :type => :class) do
     context "#{os} with zones => foo (not a valid hash)" do
       let(:params) { {:zones => 'foo'} }
 
-      it { is_expected.to raise_error(Puppet::Error, /"foo" is not a Hash/) }
+      it { is_expected.to raise_error(Puppet::Error, /expects a Hash value/) }
     end
 
     context "#{os} with TLS detail settings" do
@@ -394,7 +395,7 @@ describe('icinga2::feature::api', :type => :class) do
   context "Windows 2012 R2 with pki => foo (not a valid value)" do
     let(:params) { {:pki => 'foo'} }
 
-    it { is_expected.to raise_error(Puppet::Error, /foo isn't supported/) }
+    it { is_expected.to raise_error(Puppet::Error, /expects a match for Enum\['ca', 'icinga2', 'none', 'puppet'\]/) }
   end
 
 
@@ -424,7 +425,7 @@ describe('icinga2::feature::api', :type => :class) do
   context "Windows 2012 R2 with ssl_key_path = foo/bar (not a valid absolute path)" do
     let(:params) { {:ssl_key_path => 'foo/bar'} }
 
-    it { is_expected.to raise_error(Puppet::Error, /"foo\/bar" is not an absolute path/) }
+    it { is_expected.to raise_error(Puppet::Error, /expects a match for Variant\[Stdlib::Windowspath = Pattern\[\/.*\/\], Stdlib::Unixpath = Pattern\[\/.*\/\]\]/) }
   end
 
 
@@ -440,7 +441,7 @@ describe('icinga2::feature::api', :type => :class) do
   context "Windows 2012 R2 with ssl_cert_path = foo/bar (not a valid absolute path)" do
     let(:params) { {:ssl_cert_path => 'foo/bar'} }
 
-    it { is_expected.to raise_error(Puppet::Error, /"foo\/bar" is not an absolute path/) }
+    it { is_expected.to raise_error(Puppet::Error, /expects a match for Variant\[Stdlib::Windowspath = Pattern\[\/.*\/\], Stdlib::Unixpath = Pattern\[\/.*\/\]\]/) }
   end
 
 
@@ -456,7 +457,7 @@ describe('icinga2::feature::api', :type => :class) do
   context "Windows 2012 R2 with ssl_cacert_path = foo/bar (not a valid absolute path)" do
     let(:params) { {:ssl_cacert_path => 'foo/bar'} }
 
-    it { is_expected.to raise_error(Puppet::Error, /"foo\/bar" is not an absolute path/) }
+    it { is_expected.to raise_error(Puppet::Error, /expects a match for Variant\[Stdlib::Windowspath = Pattern\[\/.*\/\], Stdlib::Unixpath = Pattern\[\/.*\/\]\]/) }
   end
 
 
@@ -481,7 +482,7 @@ describe('icinga2::feature::api', :type => :class) do
   context "Windows 2012 R2 with accept_config => foo (not a valid boolean)" do
     let(:params) { {:accept_config => 'foo'} }
 
-    it { is_expected.to raise_error(Puppet::Error, /"foo" is not a boolean/) }
+    it { is_expected.to raise_error(Puppet::Error, /expects a Boolean value/) }
   end
 
 
@@ -506,7 +507,7 @@ describe('icinga2::feature::api', :type => :class) do
   context "Windows 2012 R2 with accept_config => foo (not a valid boolean)" do
     let(:params) { {:accept_commands => 'foo'} }
 
-    it { is_expected.to raise_error(Puppet::Error, /"foo" is not a boolean/) }
+    it { is_expected.to raise_error(Puppet::Error, /expects a Boolean value/) }
   end
 
 
@@ -528,7 +529,7 @@ describe('icinga2::feature::api', :type => :class) do
 
 
   context "Windows 2012 R2 with pki => 'icinga2', ca_port => 1234" do
-    let(:params) { {:pki => 'icinga2',:ca_port => '1234'} }
+    let(:params) { {:pki => 'icinga2',:ca_port => 1234} }
 
     it { is_expected.to contain_concat__fragment('icinga2::object::ApiListener::api')
                             .with({ 'target' => 'C:/ProgramData/icinga2/etc/icinga2/features-available/api.conf' }) }
@@ -538,7 +539,7 @@ describe('icinga2::feature::api', :type => :class) do
   context "Windows 2012 R2 with pki => 'icinga2', ca_port => foo (not a valid integer)" do
     let(:params) { {:pki => 'icinga2',:ca_port => 'foo'} }
 
-    it { is_expected.to raise_error(Puppet::Error, /first argument to be an Integer/) }
+    it { is_expected.to raise_error(Puppet::Error, /expects an Integer value/) }
   end
 
 
@@ -552,7 +553,7 @@ describe('icinga2::feature::api', :type => :class) do
   context "Windows 2012 R2 with endpoints => foo (not a valid hash)" do
     let(:params) { {:endpoints => 'foo'} }
 
-    it { is_expected.to raise_error(Puppet::Error, /"foo" is not a Hash/) }
+    it { is_expected.to raise_error(Puppet::Error, /expects a Hash value/) }
   end
 
 
@@ -567,7 +568,7 @@ describe('icinga2::feature::api', :type => :class) do
   context "Windows 2012 R2 with zones => foo (not a valid hash)" do
     let(:params) { {:zones => 'foo'} }
 
-    it { is_expected.to raise_error(Puppet::Error, /"foo" is not a Hash/) }
+    it { is_expected.to raise_error(Puppet::Error, /expects a Hash value/) }
   end
 
   context 'Windows 2012 R2 with bind settings' do

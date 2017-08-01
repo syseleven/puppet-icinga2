@@ -109,7 +109,7 @@
 #
 define icinga2::object::host(
   Stdlib::Absolutepath                       $target,
-  Enum['present', 'absent']                  $ensure                = present,
+  Enum['absent', 'present']                  $ensure                = present,
   Optional[String]                           $host_name             = $title,
   Array                                      $import                = [],
   Optional[String]                           $address               = undef,

@@ -21,7 +21,7 @@
 #
 #
 class icinga2::feature::gelf(
-  Enum['present', 'absent'] $ensure               = present,
+  Enum['absent', 'present'] $ensure               = present,
   String                    $host                 = '127.0.0.1',
   Integer[1,65535]          $port                 = 12201,
   String                    $source               = 'icinga2',

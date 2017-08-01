@@ -23,7 +23,7 @@
 #
 #
 class icinga2::feature::statusdata(
-  Enum['present', 'absent'] $ensure          = present,
+  Enum['absent', 'present'] $ensure          = present,
   Stdlib::Absolutepath      $status_path     = "${::icinga2::params::cache_dir}/status.dat",
   Stdlib::Absolutepath      $objects_path    = "${::icinga2::params::cache_dir}/objects.cache",
   Pattern[/^\d+[ms]*$/]     $update_interval = '15s',

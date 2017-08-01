@@ -75,7 +75,7 @@
 #
 define icinga2::object::dependency (
   Stdlib::Absolutepath      $target,
-  Enum['present', 'absent'] $ensure                = present,
+  Enum['absent', 'present'] $ensure                = present,
   String                    $dependency_name       = $title,
   Optional[String]          $parent_host_name      = undef,
   Optional[String]          $parent_service_name   = undef,
