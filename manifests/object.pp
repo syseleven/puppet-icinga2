@@ -77,6 +77,10 @@ define icinga2::object(
   Hash                              $attrs        = {},
 ) {
 
+  assert_private()
+
+  include ::icinga2::params
+
   case $::osfamily {
     'windows': {
       Concat {
